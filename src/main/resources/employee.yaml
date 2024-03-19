@@ -1,0 +1,147 @@
+openapi: 3.0.1
+info:
+  title: Employee Management System API
+  version: v1
+paths:
+  /employees/{id}:
+    get:
+      tags:
+        - employee-controller
+      operationId: findEmployee
+      parameters:
+        - name: id
+          description: employee id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Employee'
+    put:
+      tags:
+        - employee-controller
+      operationId: updateOneEmployee
+      parameters:
+        - name: id
+          description: employee id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Employee'
+    delete:
+      tags:
+        - employee-controller
+      operationId: deleteOneEmployee
+      parameters:
+        - name: id
+          description: employee id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+  /employees:
+    get:
+      tags:
+        - employee-controller
+      operationId: findAllEmployees
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+    post:
+      tags:
+        - employee-controller
+      operationId: addOneEmployee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Employee'
+  /:
+    get:
+      tags:
+        - employee-controller
+      operationId: home
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+components:
+  schemas:
+    Employee:
+      type: object
+      properties:
+        id:
+          description: employee id
+          type: integer
+          format: int32
+        firstName:
+          description: employee first name
+          type: string
+        lastName:
+          description: employee last name
+          type: string
+        dateOfBirth:
+          description: employee date of borth in mm/dd/yyyy format
+          type: string
+          format: date
+        emailAddress:
+          description: employee email address
+          type: string
+        phone:
+          description: employee phone with 10 numerical characters.
+          type: string
+        jobTitle:
+          description: employee job title
+          type: string
+        department:
+          description: employee department
+          type: string
+        location:
+          description: employee work location
+          type: string
+        startDate:
+          description: employee start date in mm/dd/yyyy format
+          type: string
+          format: date
+        managerReporting:
+          description: manager name  
+          type: string

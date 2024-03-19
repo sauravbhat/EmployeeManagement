@@ -14,7 +14,6 @@ Requested Operations:
 
 Employee Entity: 
 
-::
 FIRSTNAME 
 LASTNAME 
 EMAILADDRESS 
@@ -28,16 +27,10 @@ EMPLOYEEID
 MANAGER-REPORTING 
  
 
-   
-
-
-
 The source code has been uploaded in github. there are five endpoints and they can be tested with the following curl command below.
 
 
 POST - 
-
-::
 
 curl --location 'http://localhost:8080/employees' \
 --header 'Content-Type: application/json' \
@@ -56,18 +49,15 @@ curl --location 'http://localhost:8080/employees' \
 }'
 
 Get all - 
-::
 
 curl --location 'http://localhost:8080/employees'
 
 Get one - 
-::
 
 curl --location 'http://localhost:8080/employees/52'
 
 Put - 
 
-::
 curl --location --request PUT 'http://localhost:8080/employees/52' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
@@ -85,7 +75,6 @@ curl --location --request PUT 'http://localhost:8080/employees/52' \
 }'
 
 Delete - 
-::
 
 curl --location --request DELETE 'http://localhost:8080/employees/2'
 
